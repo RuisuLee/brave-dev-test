@@ -1,0 +1,31 @@
+{
+  "name": "task2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "20.3.3",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.7",
+    "next": "13.4.7",
+    "react": "18.2.0",
+    "react-currency-format": "^1.1.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.1",
+    "react-redux": "^8.1.1",
+    "styled-components": "^6.0.1",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@types/react-currency-format": "^1.0.0"
+  }
+}
