@@ -1,4 +1,4 @@
-import { STYLE_VARS } from "@/constants";
+import { STYLE_VARS, device } from "@/constants";
 import { useStoreDispatch } from "@/lib/store";
 import { chooseOperator } from "@/lib/store/operator";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,10 @@ const OperatorCard = styled.div`
 
   &:hover {
     box-shadow: 0px 0px 8px 0px ${STYLE_VARS.gray};
+  }
+
+  @media ${device.mobile} {
+    width: 100px;
   }
 `;
 

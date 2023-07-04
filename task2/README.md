@@ -12,6 +12,8 @@
 
 ### Демо
 
+[Ссылка на демо](https://drive.google.com/file/d/1r8Itz_EDQ3IbHW4Zu98seuodd6UM5Hy9/view?usp=drive_link)
+
 ### Используемый стек
 
 TypeScript, Next.js, React, React Hooks, ReduxToolkit, Styled-Components

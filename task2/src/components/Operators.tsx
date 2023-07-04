@@ -1,4 +1,4 @@
-import { OPERATORS } from "@/constants";
+import { OPERATORS, device } from "@/constants";
 import { styled } from "styled-components";
 import { Operator } from "./Operator";
 import { useSelector } from "react-redux";
@@ -11,6 +11,10 @@ const OperatorsList = styled.div`
   align-content: space-around;
   justify-content: space-between;
   margin: 20px auto;
+
+  @media ${device.mobile} {
+    width: 90%;
+  }
 `;
 
 export const Operators = () => {
@@ -19,8 +23,8 @@ export const Operators = () => {
   );
   return (
     <OperatorsList>
-      {operators.map((operator) => (
-        <Operator key={operator.name} {...operator}></Operator>
+      {operators.map((operator, index) => (
+        <Operator key={index} {...operator}></Operator>
       ))}
     </OperatorsList>
   );

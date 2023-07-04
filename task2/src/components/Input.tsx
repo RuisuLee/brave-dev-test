@@ -1,12 +1,7 @@
 import { STYLE_VARS } from "@/constants";
 import { InputHTMLAttributes } from "react";
 import CurrencyFormat from "react-currency-format";
-import {
-  Control,
-  Controller,
-  FieldValues,
-  UseFormRegister,
-} from "react-hook-form";
+import { Control, Controller, FieldValues } from "react-hook-form";
 import styled from "styled-components";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -85,6 +80,7 @@ export const Input = ({
                 mask="_"
                 id={name}
                 placeholder={placeholdetText}
+                type="tel"
                 {...field}
               ></StyledMaskInput>
             )}

@@ -12,6 +12,13 @@ export const STYLE_VARS = {
   lightGray: "#eeeff2",
 };
 
+export const device = {
+  mobile: `(min-width: 320px) and (max-width: 424px)`,
+  tablet: `(min-width: 425px) and (max-width: 768px)`,
+  laptop: `(min-width: 768px) and (max-width: 1024px)`,
+  desktop: `(min-width: 2560px)`,
+};
+
 export const OPERATORS = [
   {
     name: "МТС",
@@ -55,3 +62,9 @@ export const API_RESPONSES = [
     message: "Ошибка! Проверьте введеные данные.",
   },
 ];
+
+export const PHONE_NUMBER_VALIDATION_ERROR = {
+  id: 2,
+  statusCode: 400,
+  message: "Неверный номер телефона!",
+};

@@ -1,4 +1,4 @@
-import { STYLE_VARS } from "@/constants";
+import { STYLE_VARS, device } from "@/constants";
 import styled from "styled-components";
 
 export const Main = styled.section`
@@ -24,5 +24,16 @@ export const Main = styled.section`
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: ${STYLE_VARS.lightMainColor};
+  }
+
+  @media ${device.mobile} {
+    padding: 20px;
+    margin: 0 10px;
+    max-height: 400px;
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    max-height: 350px;
   }
 `;
