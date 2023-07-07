@@ -27,6 +27,12 @@ const nextConfig = {
 
     return config;
   },
+  experimental: {
+    appDir: true,
+  },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig;

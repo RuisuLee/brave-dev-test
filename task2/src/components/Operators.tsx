@@ -1,8 +1,10 @@
-import { OPERATORS, device } from "@/constants";
+import { device } from "@/constants";
 import { styled } from "styled-components";
 import { Operator } from "./Operator";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
+import { useEffect, useState } from "react";
+import { IOperator } from "@/lib/store/operators";
 
 const OperatorsList = styled.div`
   display: flex;
@@ -18,13 +20,17 @@ const OperatorsList = styled.div`
 `;
 
 export const Operators = () => {
-  const operators = useSelector(
-    (state: RootState) => state.operators.operators
-  );
+  const [operators, setOperators] = useState<Array<IOperator>>([]);
+  const ops = useSelector((state: RootState) => state.operators.operators);
+
+  useEffect(() => {
+    setOperators(ops);
+  }, []);
+
   return (
     <OperatorsList>
-      {operators.map((operator, index) => (
-        <Operator key={index} {...operator}></Operator>
+      {operators.map((operator) => (
+        <Operator key={operator.name} {...operator} />
       ))}
     </OperatorsList>
   );

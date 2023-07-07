@@ -1,4 +1,9 @@
-import { API_RESPONSES, PHONE_NUMBER_VALIDATION_ERROR } from "@/constants";
+import {
+  FAIL,
+  PHONE_NUMBER_VALIDATION_ERROR,
+  SUCCESS,
+  SUM_VALIDATION_ERROR,
+} from "@/constants";
 
 export interface IPaymentApiResponse {
   id: number;
@@ -14,22 +19,34 @@ export interface IPaymentApiParams {
 export const makePayment = async (
   params: IPaymentApiParams
 ): Promise<IPaymentApiResponse | undefined> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isPhoneNumberCorrect(params.phoneNumber)) {
+        if (isSumCorrect(params.sum)) {
+          const randomId = Math.random() > 0.5 ? 1 : 0;
+          if (randomId === 0) {
+            resolve(SUCCESS);
+          } else {
+            reject(FAIL);
+          }
+        } else {
+          reject(SUM_VALIDATION_ERROR);
+        }
+      } else {
+        reject(PHONE_NUMBER_VALIDATION_ERROR);
+      }
+    }, 1000);
+  });
+};
+
+const isPhoneNumberCorrect = (number: string): boolean => {
   const telRegex =
     /^(\+7)[\s\-]\([0-9]{3}\)[\s]?[0-9]{3}[\s]?[0-9]{2}[\s]?[0-9]{2}$/;
-  if (!params.phoneNumber.match(telRegex)) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(PHONE_NUMBER_VALIDATION_ERROR);
-      }, 1000);
-    });
-  } else {
-    const randomId = Math.random() > 0.5 ? 1 : 0;
-    const resp = API_RESPONSES.find((response) => response.id === randomId);
+  return !!number.match(telRegex);
+};
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(resp);
-      }, 1000);
-    });
-  }
+const isSumCorrect = (sum: string): boolean => {
+  const currencyIndex = sum.indexOf("₽");
+  const amount = Number(sum.slice(0, currencyIndex));
+  return amount > 0 && amount <= 1000;
 };

@@ -56,10 +56,10 @@ export const Loader = () => {
   return (
     <LoaderWrapper>
       <LoaderRing>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div />
+        <div />
+        <div />
+        <div />
       </LoaderRing>
     </LoaderWrapper>
   );

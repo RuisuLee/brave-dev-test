@@ -13,8 +13,8 @@ export const MainPage = () => {
   return (
     <Main>
       <Title>{TEXTS.chooseOperator}</Title>
-      <Operators></Operators>
-      <AddOperator></AddOperator>
+      <Operators />
+      <AddOperator />
     </Main>
   );
 };

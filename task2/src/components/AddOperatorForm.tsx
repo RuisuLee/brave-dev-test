@@ -39,28 +39,28 @@ export const AddOperatorForm = ({ onSaveClick }: IProps) => {
         <Input
           name="operatorName"
           labelText={TEXTS.inputOperatorName}
-          placeholdetText={TEXTS.operatorName}
+          placeholderText={TEXTS.operatorName}
           type="text"
           control={methods.control}
-        ></Input>
+        />
         <Input
           name="operatorIcon"
           labelText={TEXTS.inputLinkToOperatorIcon}
-          placeholdetText={TEXTS.linkToOperatorIcon}
+          placeholderText={TEXTS.linkToOperatorIcon}
           type="text"
           control={methods.control}
-        ></Input>
+        />
         <Button
           buttonText={TEXTS.save}
           buttonType="button"
           onClick={onSubmit}
-        ></Button>
+        />
         <Button
           buttonText={TEXTS.cancel}
           buttonType="button"
           onClick={onSaveClick}
           margin="10px 0 0 0"
-        ></Button>
+        />
       </AddOperatorFormWrapper>
     </FormProvider>
   );

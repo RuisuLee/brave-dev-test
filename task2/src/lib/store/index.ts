@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import operators from "./operators";
-import operator from "./operator";
 import loader from "./loader";
 
 export const store = configureStore({
-  reducer: { operators, operator, loader },
+  reducer: { operators, loader },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

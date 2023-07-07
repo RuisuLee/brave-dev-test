@@ -27,10 +27,8 @@ export const AddOperator = () => {
         buttonType="button"
         onClick={onAddOperatorClick}
         visible={isAddOperatorButtonVisible}
-      ></Button>
-      {addOperator && (
-        <AddOperatorForm onSaveClick={onSaveButtonClick}></AddOperatorForm>
-      )}
+      />
+      {addOperator && <AddOperatorForm onSaveClick={onSaveButtonClick} />}
     </AddOperatorSection>
   );
 };

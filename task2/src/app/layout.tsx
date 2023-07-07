@@ -8,7 +8,7 @@ import { store } from "@/lib/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+const metadata = {
   title: "Оплата связи",
   description: "Web приложение — терминал оплаты мобильного телефона.",
 };

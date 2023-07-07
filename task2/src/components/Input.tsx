@@ -3,11 +3,12 @@ import { InputHTMLAttributes } from "react";
 import CurrencyFormat from "react-currency-format";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import styled from "styled-components";
+import InputMask from "react-input-mask";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   labelText: string;
-  placeholdetText: string;
+  placeholderText: string;
   type: "text" | "tel" | "currency";
   control?: Control<FieldValues, any>;
 }
@@ -42,11 +43,20 @@ const StyledMaskInput = styled(CurrencyFormat)`
   border-radius: 4px;
   outline: none;
 `;
+const StyledPhoneInput = styled(InputMask)`
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid ${STYLE_VARS.lightGray};
+  border-radius: 4px;
+  outline: none;
+`;
 
 export const Input = ({
   name,
   labelText,
-  placeholdetText,
+  placeholderText,
   type,
   control,
 }: IInputProps) => {
@@ -60,11 +70,7 @@ export const Input = ({
             rules={{ required: true }}
             defaultValue={""}
             render={({ field }) => (
-              <CustomInput
-                id={name}
-                placeholder={placeholdetText}
-                {...field}
-              ></CustomInput>
+              <CustomInput id={name} placeholder={placeholderText} {...field} />
             )}
           />
         );
@@ -73,16 +79,14 @@ export const Input = ({
           <Controller
             name={name}
             control={control}
-            rules={{ required: true }}
+            defaultValue={""}
             render={({ field }) => (
-              <StyledMaskInput
-                format="+7 (###) ### ## ##"
-                mask="_"
+              <StyledPhoneInput
+                mask="+7 (999) 999 99 99"
                 id={name}
-                placeholder={placeholdetText}
-                type="tel"
+                placeholder={placeholderText}
                 {...field}
-              ></StyledMaskInput>
+              />
             )}
           />
         );
@@ -91,18 +95,19 @@ export const Input = ({
           <Controller
             name={name}
             control={control}
-            rules={{ required: true }}
+            defaultValue={""}
             render={({ field }) => (
               <StyledMaskInput
                 suffix={"₽"}
                 thousandSeparator={" "}
                 id={name}
-                placeholder={placeholdetText}
+                placeholder={placeholderText}
                 isAllowed={(values: IValues) =>
-                  Number(values.value) > 0 && Number(values.value) <= 1000
+                  values.value === "" ||
+                  (Number(values.value) > 0 && Number(values.value) <= 1000)
                 }
                 {...field}
-              ></StyledMaskInput>
+              />
             )}
           />
         );

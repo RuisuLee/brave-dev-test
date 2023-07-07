@@ -1,7 +1,8 @@
 import { OPERATORS } from "@/constants";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IOperator {
+export interface IOperator {
+  id: number;
   name: string;
   icon: string;
 }
@@ -10,10 +11,11 @@ interface IOperatorsState {
   operators: Array<IOperator>;
 }
 
-const initailOperators = localStorage.getItem("operators");
+const initialOperators =
+  typeof window !== "undefined" ? localStorage.getItem("operators") : "";
 
 const initialState: IOperatorsState = {
-  operators: initailOperators ? JSON.parse(initailOperators) : OPERATORS,
+  operators: initialOperators ? JSON.parse(initialOperators) : OPERATORS,
 };
 
 const operatorsSlice = createSlice({
@@ -21,7 +23,11 @@ const operatorsSlice = createSlice({
   initialState,
   reducers: {
     addOperator: (state, action) => {
-      state.operators.push(action.payload);
+      const newOperator = {
+        id: state.operators.length,
+        ...action.payload,
+      };
+      state.operators.push(newOperator);
       localStorage.setItem("operators", JSON.stringify(state.operators));
     },
   },

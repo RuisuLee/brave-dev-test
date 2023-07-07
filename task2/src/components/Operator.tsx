@@ -1,10 +1,9 @@
 import { STYLE_VARS, device } from "@/constants";
-import { useStoreDispatch } from "@/lib/store";
-import { chooseOperator } from "@/lib/store/operator";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 interface IProps {
+  id: number;
   name: string;
   icon: string;
 }
@@ -37,13 +36,11 @@ const Image = styled.img`
   border-radius: 4px;
 `;
 
-export const Operator = ({ name, icon }: IProps) => {
+export const Operator = ({ id, name, icon }: IProps) => {
   const router = useRouter();
-  const dispatch = useStoreDispatch();
 
   const onCardClick = () => {
-    dispatch(chooseOperator(name));
-    router.push("/payment");
+    router.push(`/operator/${id}`);
   };
   return (
     <OperatorCard
@@ -51,7 +48,7 @@ export const Operator = ({ name, icon }: IProps) => {
         onCardClick();
       }}
     >
-      <Image src={icon}></Image>
+      <Image src={icon} />
       <div>{name}</div>
     </OperatorCard>
   );
