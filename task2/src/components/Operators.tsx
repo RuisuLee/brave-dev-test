@@ -25,7 +25,7 @@ export const Operators = () => {
 
   useEffect(() => {
     setOperators(ops);
-  }, []);
+  }, [ops]);
 
   return (
     <OperatorsList>
